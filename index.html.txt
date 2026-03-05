@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechPC - Peças e Montagem de Computadores</title>
+
+<style>
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+margin:0;
+background:#0f172a;
+color:white;
+}
+
+header{
+background:#020617;
+padding:20px;
+text-align:center;
+}
+
+header h1{
+margin:0;
+color:#38bdf8;
+}
+
+nav{
+margin-top:10px;
+}
+
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.banner{
+padding:60px;
+text-align:center;
+background:linear-gradient(135deg,#0369a1,#020617);
+}
+
+.banner h2{
+font-size:40px;
+}
+
+.container{
+padding:40px;
+max-width:1200px;
+margin:auto;
+}
+
+.produtos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:#020617;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+}
+
+.preco{
+color:#22c55e;
+font-size:22px;
+margin:10px 0;
+}
+
+button{
+background:#38bdf8;
+border:none;
+padding:12px 20px;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#0ea5e9;
+}
+
+.servico{
+background:#020617;
+padding:30px;
+border-radius:10px;
+text-align:center;
+margin-top:40px;
+}
+
+footer{
+background:#020617;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>TechPC</h1>
+<nav>
+<a href="#">Inicio</a>
+<a href="#produtos">Peças</a>
+<a href="#montagem">Montagem de PC</a>
+</nav>
+</header>
+
+<section class="banner">
+<h2>Monte seu PC Gamer</h2>
+<p>Venda de peças + montagem profissional</p>
+</section>
+
+<section class="container">
+
+<h2 id="produtos">Peças de Computador</h2>
+
+<div class="produtos" id="listaProdutos"></div>
+
+<div class="servico" id="montagem">
+<h2>Montagem de PC</h2>
+<p>Montamos seu computador gamer ou profissional.</p>
+<p class="preco">Serviço a partir de R$150</p>
+
+<button onclick="comprar('Montagem de PC')">Contratar Serviço</button>
+
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 TechPC - Peças e Montagem</p>
+</footer>
+
+<script>
+
+const whatsapp = "5562999999999"
+
+const produtos = [
+
+{
+nome:"Placa de Vídeo RTX 4060",
+preco:"R$ 2.499",
+img:"https://images.unsplash.com/photo-1591488320449-011701bb6704"
+},
+
+{
+nome:"Processador Ryzen 7",
+preco:"R$ 1.899",
+img:"https://images.unsplash.com/photo-1587202372775-e229f172b9d7"
+},
+
+{
+nome:"Memória RAM 16GB DDR4",
+preco:"R$ 399",
+img:"https://images.unsplash.com/photo-1562976540-1502c2145186"
+},
+
+{
+nome:"SSD NVME 1TB",
+preco:"R$ 499",
+img:"https://images.unsplash.com/photo-1611174743420-3d7df880ce32"
+}
+
+]
+
+const lista = document.getElementById("listaProdutos")
+
+produtos.forEach(p => {
+
+lista.innerHTML += `
+
+<div class="card">
+<img src="${p.img}">
+<h3>${p.nome}</h3>
+<p class="preco">${p.preco}</p>
+<button onclick="comprar('${p.nome}')">Comprar</button>
+</div>
+
+`
+
+})
+
+function comprar(produto){
+
+let msg = `Olá, quero comprar: ${produto}`
+
+window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`)
+
+}
+
+</script>
+
+</body>
+</html>
